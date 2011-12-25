@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
-import name.dericbourg.apps.mobile.soundsampler.core.model.PrimaryKey;
+import name.dericbourg.apps.mobile.soundsampler.core.model.PrimaryKeyAccessor;
 import name.dericbourg.apps.mobile.soundsampler.core.persitence.Table;
 
 /**
@@ -37,11 +37,11 @@ public class Parameter extends AbstractObject {
 		}
 	}
 
-	@PrimaryKey
 	private String prmCd;
 	private String label;
 	private String value;
 
+	@PrimaryKeyAccessor
 	public String getPrmCd() {
 		return prmCd;
 	}

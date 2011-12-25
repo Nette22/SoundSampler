@@ -6,6 +6,6 @@ package name.dericbourg.apps.mobile.soundsampler.core.model;
  * @author alban
  * 
  */
-public @interface PrimaryKey {
+public @interface PrimaryKeyAccessor {
 
 }

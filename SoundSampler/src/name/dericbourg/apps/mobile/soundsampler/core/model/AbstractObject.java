@@ -1,6 +1,7 @@
 package name.dericbourg.apps.mobile.soundsampler.core.model;
 
-import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,25 +17,26 @@ public abstract class AbstractObject {
 	 */
 	public Object getPrimaryKeyValue() throws SystemException {
 		Class<?> classInstance = this.getClass();
-		List<Field> primaryKeys = new ArrayList<Field>();
-		for (Field field : classInstance.getFields()) {
-			PrimaryKey key = field.getAnnotation(PrimaryKey.class);
+		List<Method> primaryKeyAccessors = new ArrayList<Method>();
+		for (Method method : classInstance.getMethods()) {
+			PrimaryKeyAccessor key = method
+					.getAnnotation(PrimaryKeyAccessor.class);
 			if (key != null) {
-				primaryKeys.add(field);
+				primaryKeyAccessors.add(method);
 			}
 		}
 
 		// Should have only one primary key.
-		if (primaryKeys.size() == 0) {
+		if (primaryKeyAccessors.size() == 0) {
 			throw new SystemException();
-		} else if (primaryKeys.size() > 1) {
+		} else if (primaryKeyAccessors.size() > 1) {
 			throw new SystemException();
 		}
 
 		// Return value.
 		try {
-			return primaryKeys.get(0).get(this);
-		} catch (IllegalArgumentException e) {
+			return primaryKeyAccessors.get(0).invoke(this);
+		} catch (InvocationTargetException e) {
 			throw new SystemException();
 		} catch (IllegalAccessException e) {
 			throw new SystemException();
