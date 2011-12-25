@@ -1,9 +1,8 @@
 package name.dericbourg.apps.mobile.soundsampler.core.persitence;
 
-import java.util.Collection;
-
 import name.dericbourg.apps.mobile.soundsampler.core.exception.SystemException;
 import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
+import android.database.Cursor;
 
 /**
  * CRUD operator signature.
@@ -21,7 +20,7 @@ public interface CrudOperator<T extends AbstractObject, K extends Object> {
 
 	void delete(K key) throws SystemException;
 
-	public T get(K key) throws SystemException;
+	public Cursor get(K key) throws SystemException;
 
-	public Collection<T> getAll() throws SystemException;
+	public Cursor getAll() throws SystemException;
 }
