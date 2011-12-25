@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
+import name.dericbourg.apps.mobile.soundsampler.core.model.PrimaryKey;
 import name.dericbourg.apps.mobile.soundsampler.core.persitence.Table;
 
 /**
@@ -18,6 +19,8 @@ public class Sample extends AbstractObject {
 	public enum Fields {
 		/** Database identifier. */
 		SPL_ID,
+		/** Foreign key to preset. */
+		PRE_ID,
 		/** Sample name. */
 		LABEL,
 		/** URL to file. */
@@ -36,7 +39,9 @@ public class Sample extends AbstractObject {
 		}
 	}
 
+	@PrimaryKey
 	private Long splId;
+	private Long preId;
 	private String label;
 	private String fileUrl;
 
@@ -46,6 +51,14 @@ public class Sample extends AbstractObject {
 
 	public void setSplId(Long splId) {
 		this.splId = splId;
+	}
+
+	public Long getPreId() {
+		return preId;
+	}
+
+	public void setPreId(Long preId) {
+		this.preId = preId;
 	}
 
 	public String getLabel() {

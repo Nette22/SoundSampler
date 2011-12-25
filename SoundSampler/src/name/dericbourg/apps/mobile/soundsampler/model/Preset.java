@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
+import name.dericbourg.apps.mobile.soundsampler.core.model.PrimaryKey;
 import name.dericbourg.apps.mobile.soundsampler.core.persitence.Table;
 
 /**
@@ -35,6 +36,7 @@ public class Preset extends AbstractObject {
 		}
 	}
 
+	@PrimaryKey
 	private Long preId;
 	private String label;
 
