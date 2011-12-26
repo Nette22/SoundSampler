@@ -1,58 +1,80 @@
 package name.dericbourg.apps.mobile.soundsampler.model;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
-import name.dericbourg.apps.mobile.soundsampler.core.model.PrimaryKeyAccessor;
-import name.dericbourg.apps.mobile.soundsampler.core.persitence.Table;
+
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
 
 /**
  * Preset.
  * 
  * @author alban
- * 
  */
+@DatabaseTable(tableName = "PRESET")
+public class Preset extends AbstractObject<Long> {
 
-public class Preset extends AbstractObject {
-	/** Object fields in database. */
-	@Table("PRESET")
-	public enum Fields {
-		/** Identifier. */
-		PRE_ID,
-		/** Label. */
-		LABEL;
-
-		public static String getTableName() {
-			return "PRESET";
-		}
-
-		public static String[] toArray() {
-			List<String> fields = new ArrayList<String>();
-			for (Fields field : Fields.values()) {
-				fields.add(field.name());
-			}
-			return (String[]) fields.toArray();
-		}
-	}
-
+	@DatabaseField(generatedId = true)
 	private Long preId;
+	@DatabaseField
 	private String label;
 
-	@PrimaryKeyAccessor
-	public Long getPreId() {
-		return preId;
+	/**
+	 * Constructor.
+	 */
+	public Preset() {
+		// No arg constructor needed by ORMLite.
 	}
 
-	public void setPreId(Long preId) {
-		this.preId = preId;
+	/**
+	 * Object initializer constructor.
+	 * 
+	 * @param preId Id.
+	 * @param label Label.
+	 */
+	public Preset(final Long preId, final String label) {
+		setPreId(preId);
+		setLabel(label);
 	}
 
+	/**
+	 * Label.
+	 * 
+	 * @return Label.
+	 */
 	public String getLabel() {
 		return label;
 	}
 
-	public void setLabel(String label) {
+	/**
+	 * Id.
+	 * 
+	 * @return Id.
+	 */
+	public Long getPreId() {
+		return preId;
+	}
+
+	/**
+	 * Set label.
+	 * 
+	 * @param label Label.
+	 */
+	public void setLabel(final String label) {
 		this.label = label;
+	}
+
+	/**
+	 * Set id.
+	 * 
+	 * @param preId Id.
+	 */
+	public void setPreId(final Long preId) {
+		this.preId = preId;
+	}
+
+	/** {@inheritDoc} */
+	@Override
+	public Long getId() {
+		return getPreId();
 	}
 }
