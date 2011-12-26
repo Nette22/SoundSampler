@@ -1,9 +1,9 @@
-package name.dericbourg.apps.mobile.soundsampler.core.persitence;
+package name.dericbourg.apps.mobile.soundsampler.db;
 
 import java.util.Collection;
 
-import name.dericbourg.apps.mobile.soundsampler.core.exception.SystemException;
-import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
+import name.dericbourg.apps.mobile.soundsampler.exception.SystemException;
+import name.dericbourg.apps.mobile.soundsampler.model.AbstractObject;
 
 /**
  * CRUD operator signature.

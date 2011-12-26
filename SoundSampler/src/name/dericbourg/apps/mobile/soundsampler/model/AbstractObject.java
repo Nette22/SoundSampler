@@ -1,4 +1,4 @@
-package name.dericbourg.apps.mobile.soundsampler.core.model;
+package name.dericbourg.apps.mobile.soundsampler.model;
 
 /**
  * Abstract data object.

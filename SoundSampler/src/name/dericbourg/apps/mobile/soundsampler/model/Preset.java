@@ -1,6 +1,5 @@
 package name.dericbourg.apps.mobile.soundsampler.model;
 
-import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;

@@ -4,9 +4,8 @@ import java.sql.SQLException;
 import java.util.Collection;
 
 import name.dericbourg.apps.mobile.soundsampler.ApplicationProperties;
-import name.dericbourg.apps.mobile.soundsampler.core.exception.SystemException;
-import name.dericbourg.apps.mobile.soundsampler.core.model.AbstractObject;
-import name.dericbourg.apps.mobile.soundsampler.core.persitence.CrudOperator;
+import name.dericbourg.apps.mobile.soundsampler.exception.SystemException;
+import name.dericbourg.apps.mobile.soundsampler.model.AbstractObject;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 

@@ -2,7 +2,7 @@ package name.dericbourg.apps.mobile.soundsampler.db;
 
 import java.sql.SQLException;
 
-import name.dericbourg.apps.mobile.soundsampler.core.exception.SystemException;
+import name.dericbourg.apps.mobile.soundsampler.exception.SystemException;
 import name.dericbourg.apps.mobile.soundsampler.model.Preset;
 import android.content.Context;
 

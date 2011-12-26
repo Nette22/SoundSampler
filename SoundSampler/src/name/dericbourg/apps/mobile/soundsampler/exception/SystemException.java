@@ -1,4 +1,4 @@
-package name.dericbourg.apps.mobile.soundsampler.core.exception;
+package name.dericbourg.apps.mobile.soundsampler.exception;
 
 /**
  * System exception.

@@ -1,6 +1,6 @@
 package name.dericbourg.apps.mobile.soundsampler.db;
 
-import name.dericbourg.apps.mobile.soundsampler.core.exception.NotImplementedException;
+import name.dericbourg.apps.mobile.soundsampler.exception.NotImplementedException;
 import android.database.sqlite.SQLiteDatabase;
 
 import com.j256.ormlite.support.ConnectionSource;
