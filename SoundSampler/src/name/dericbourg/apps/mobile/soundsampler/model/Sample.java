@@ -1,8 +1,5 @@
 package name.dericbourg.apps.mobile.soundsampler.model;
 
-
-import com.j256.ormlite.field.DatabaseField;
-
 /**
  * Sample.
  * 
@@ -10,13 +7,9 @@ import com.j256.ormlite.field.DatabaseField;
  */
 public class Sample extends AbstractObject<Long> {
 
-	@DatabaseField(generatedId = true)
 	private Long splId;
-	@DatabaseField(foreign = true)
 	private Long preId;
-	@DatabaseField
 	private String label;
-	@DatabaseField
 	private String fileUrl;
 
 	/**

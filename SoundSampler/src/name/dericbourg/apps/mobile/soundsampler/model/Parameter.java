@@ -1,8 +1,5 @@
 package name.dericbourg.apps.mobile.soundsampler.model;
 
-
-import com.j256.ormlite.field.DatabaseField;
-
 /**
  * Application parameters.
  * 
@@ -10,11 +7,8 @@ import com.j256.ormlite.field.DatabaseField;
  */
 public class Parameter extends AbstractObject<String> {
 
-	@DatabaseField(id = true)
 	private String prmCd;
-	@DatabaseField
 	private String label;
-	@DatabaseField
 	private String value;
 
 	/**

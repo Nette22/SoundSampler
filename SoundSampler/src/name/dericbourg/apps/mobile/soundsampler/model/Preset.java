@@ -1,20 +1,13 @@
 package name.dericbourg.apps.mobile.soundsampler.model;
 
-
-import com.j256.ormlite.field.DatabaseField;
-import com.j256.ormlite.table.DatabaseTable;
-
 /**
  * Preset.
  * 
  * @author alban
  */
-@DatabaseTable(tableName = "PRESET")
 public class Preset extends AbstractObject<Long> {
 
-	@DatabaseField(generatedId = true)
 	private Long preId;
-	@DatabaseField
 	private String label;
 
 	/**
