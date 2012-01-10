@@ -74,12 +74,17 @@ final class SampleDao {
 
 	/**
 	 * Fetch all sample rows.
+	 * @param preId Preset id.
 	 * 
 	 * @return All samples.
+	 * @throws SystemException System exception.
 	 */
-	public Cursor getAll() {
+	public Cursor getAllFromPreset(Long preId) throws SystemException {
+		if (preId==null) {
+			throw new SystemException("preId");
+		}
 		return DatabaseHelper.getRoDatabase(context).query("Sample", new String[] { "SPL_ID", "PRE_ID", "LABEL" },
-				null, null, null, null, null);
+				"PRE_ID = " + preId, null, null, null, null);
 	}
 
 	/**
