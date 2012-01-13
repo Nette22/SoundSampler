@@ -74,16 +74,16 @@ final class SampleDao {
 
 	/**
 	 * Fetch all sample rows.
-	 * @param preId Preset id.
 	 * 
+	 * @param preId Preset id.
 	 * @return All samples.
 	 * @throws SystemException System exception.
 	 */
-	public Cursor getAllFromPreset(Long preId) throws SystemException {
-		if (preId==null) {
+	public Cursor getAllFromPreset(final Long preId) throws SystemException {
+		if (preId == null) {
 			throw new SystemException("preId");
 		}
-		return DatabaseHelper.getRoDatabase(context).query("Sample", new String[] { "SPL_ID", "PRE_ID", "LABEL" },
+		return DatabaseHelper.getRoDatabase(context).query("Sample", new String[] { "SPL_ID _id", "PRE_ID", "LABEL" },
 				"PRE_ID = " + preId, null, null, null, null);
 	}
 
@@ -95,7 +95,7 @@ final class SampleDao {
 	 */
 	public Cursor get(final Long splId) {
 		final Cursor cur = DatabaseHelper.getRoDatabase(context).query(true, "Sample",
-				new String[] { "SPL_ID", "PRE_ID", "LABEL" }, "SPL_ID" + "=" + splId.longValue(), null, null, null,
+				new String[] { "SPL_ID _id", "PRE_ID", "LABEL" }, "SPL_ID" + "=" + splId.longValue(), null, null, null,
 				null, null);
 		if (cur != null) {
 			cur.moveToFirst();

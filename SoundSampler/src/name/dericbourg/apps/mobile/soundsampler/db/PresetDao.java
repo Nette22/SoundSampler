@@ -76,8 +76,8 @@ final class PresetDao {
 	 * @return All presets.
 	 */
 	public Cursor getAll() {
-		return DatabaseHelper.getRoDatabase(context).query("PRESET", new String[] { "PRE_ID", "LABEL" }, null, null,
-				null, null, null);
+		return DatabaseHelper.getRoDatabase(context).query("PRESET", new String[] { "PRE_ID _id", "LABEL" }, null,
+				null, null, null, null);
 	}
 
 	/**
@@ -88,7 +88,8 @@ final class PresetDao {
 	 */
 	public Cursor get(final Long preId) {
 		final Cursor cur = DatabaseHelper.getRoDatabase(context).query(true, "PRESET",
-				new String[] { "PRE_ID", "LABEL" }, "PRE_ID" + "=" + preId.longValue(), null, null, null, null, null);
+				new String[] { "PRE_ID _id", "LABEL" }, "PRE_ID" + "=" + preId.longValue(), null, null, null, null,
+				null);
 		if (cur != null) {
 			cur.moveToFirst();
 		}
