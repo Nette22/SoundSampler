@@ -88,7 +88,6 @@ public class ServiceWrapper {
 	 * 
 	 * @param preId Preset id.
 	 * @return Cursor on all samples from a specified preset.
-	 * @throws SystemException System exception.
 	 */
 	public Cursor getAllSampleFromPreset(final Long preId) {
 		return sampleDao.getAllFromPreset(preId);
