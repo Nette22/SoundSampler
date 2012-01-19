@@ -41,8 +41,8 @@ public class SoundSamplerActivity extends ListActivity {
 		final Cursor presetCursor = serviceWrapper.getAllPreset();
 		startManagingCursor(presetCursor);
 		final String[] displayedFields = new String[] { "LABEL" };
-		final int[] views = new int[] { R.id.presetRow };
-		final SimpleCursorAdapter presets = new SimpleCursorAdapter(this, R.layout.sample_pad, presetCursor,
+		final int[] views = new int[] { R.id.preset_row };
+		final SimpleCursorAdapter presets = new SimpleCursorAdapter(this, R.layout.preset_list, presetCursor,
 				displayedFields, views);
 		setListAdapter(presets);
 	}
