@@ -71,7 +71,7 @@ final class PresetDao {
 	 */
 	public Cursor getAll() {
 		return DatabaseHelper.getRoDatabase(context).query("PRESET", new String[] { "PRE_ID _id", "LABEL" }, null,
-				null, null, null, null);
+				null, null, null, "LABEL asc");
 	}
 
 	/**
