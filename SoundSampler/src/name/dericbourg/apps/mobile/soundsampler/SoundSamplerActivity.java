@@ -21,6 +21,7 @@ import android.widget.SimpleCursorAdapter;
 public class SoundSamplerActivity extends ListActivity {
 
 	private ServiceWrapper serviceWrapper;
+	private Cursor presetCursor;
 
 	/**
 	 * Called when the activity is first created.
@@ -38,8 +39,10 @@ public class SoundSamplerActivity extends ListActivity {
 
 	//
 	private void fillData() {
-		final Cursor presetCursor = serviceWrapper.getAllPreset();
-		startManagingCursor(presetCursor);
+		if (presetCursor == null) {
+			presetCursor = serviceWrapper.getAllPreset();
+			startManagingCursor(presetCursor);
+		}
 		final String[] displayedFields = new String[] { "LABEL" };
 		final int[] views = new int[] { R.id.preset_row };
 		final SimpleCursorAdapter presets = new SimpleCursorAdapter(this, R.layout.preset_list, presetCursor,
@@ -81,7 +84,7 @@ public class SoundSamplerActivity extends ListActivity {
 				final Preset preset = new Preset();
 				preset.setLabel(value);
 				serviceWrapper.savePreset(preset);
-				// TODO Refresh listview.
+				presetCursor.requery();
 				return;
 			}
 		});
