@@ -1,6 +1,5 @@
 package name.dericbourg.apps.mobile.soundsampler.db;
 
-import name.dericbourg.apps.mobile.soundsampler.exception.SystemException;
 import name.dericbourg.apps.mobile.soundsampler.model.Preset;
 import android.content.ContentValues;
 import android.content.Context;
@@ -29,9 +28,8 @@ final class PresetDao {
 	 * 
 	 * @param preset Preset.
 	 * @return Preset id.
-	 * @throws SystemException System exception.
 	 */
-	public Long save(final Preset preset) throws SystemException {
+	public Long save(final Preset preset) {
 		if (preset.getId() == null) {
 			// Insert.
 			return insert(preset);
@@ -39,9 +37,8 @@ final class PresetDao {
 			// Update.
 			if (update(preset)) {
 				return preset.getId();
-			} else {
-				throw new SystemException("Failed to update");
 			}
+			return null;
 		}
 	}
 
@@ -62,12 +59,9 @@ final class PresetDao {
 	 * Delete preset.
 	 * 
 	 * @param preId Preset id.
-	 * @throws SystemException System exception.
 	 */
-	public void delete(final Long preId) throws SystemException {
-		if (!(DatabaseHelper.getRwDatabase(context).delete("PRESET", "PRE_ID" + "=" + preId.longValue(), null) > 0)) {
-			throw new SystemException("Failed to delete");
-		}
+	public void delete(final Long preId) {
+		DatabaseHelper.getRwDatabase(context).delete("PRESET", "PRE_ID" + "=" + preId.longValue(), null);
 	}
 
 	/**

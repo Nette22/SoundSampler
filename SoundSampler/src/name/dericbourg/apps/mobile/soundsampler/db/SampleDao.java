@@ -1,6 +1,5 @@
 package name.dericbourg.apps.mobile.soundsampler.db;
 
-import name.dericbourg.apps.mobile.soundsampler.exception.SystemException;
 import name.dericbourg.apps.mobile.soundsampler.model.Sample;
 import android.content.ContentValues;
 import android.content.Context;
@@ -29,9 +28,8 @@ final class SampleDao {
 	 * 
 	 * @param sample sample.
 	 * @return Sample id.
-	 * @throws SystemException System exception.
 	 */
-	public Long save(final Sample sample) throws SystemException {
+	public Long save(final Sample sample) {
 		if (sample.getId() == null) {
 			// Insert.
 			return insert(sample);
@@ -39,9 +37,8 @@ final class SampleDao {
 			// Update.
 			if (update(sample)) {
 				return sample.getId();
-			} else {
-				throw new SystemException("Failed to update");
 			}
+			return null;
 		}
 	}
 
@@ -64,12 +61,9 @@ final class SampleDao {
 	 * Delete sample.
 	 * 
 	 * @param splId Sample id.
-	 * @throws SystemException System exception.
 	 */
-	public void delete(final Long splId) throws SystemException {
-		if (!(DatabaseHelper.getRwDatabase(context).delete("Sample", "SPL_ID" + "=" + splId.longValue(), null) > 0)) {
-			throw new SystemException("Failed to delete");
-		}
+	public void delete(final Long splId) {
+		DatabaseHelper.getRwDatabase(context).delete("Sample", "SPL_ID" + "=" + splId.longValue(), null);
 	}
 
 	/**
@@ -77,12 +71,8 @@ final class SampleDao {
 	 * 
 	 * @param preId Preset id.
 	 * @return All samples.
-	 * @throws SystemException System exception.
 	 */
-	public Cursor getAllFromPreset(final Long preId) throws SystemException {
-		if (preId == null) {
-			throw new SystemException("preId");
-		}
+	public Cursor getAllFromPreset(final Long preId) {
 		return DatabaseHelper.getRoDatabase(context).query("Sample", new String[] { "SPL_ID _id", "PRE_ID", "LABEL" },
 				"PRE_ID = " + preId, null, null, null, null);
 	}

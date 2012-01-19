@@ -1,6 +1,5 @@
 package name.dericbourg.apps.mobile.soundsampler.db;
 
-import name.dericbourg.apps.mobile.soundsampler.exception.SystemException;
 import name.dericbourg.apps.mobile.soundsampler.model.Preset;
 import name.dericbourg.apps.mobile.soundsampler.model.Sample;
 import android.content.Context;
@@ -31,9 +30,8 @@ public class ServiceWrapper {
 	 * 
 	 * @param preset Preset.
 	 * @return Preset id.
-	 * @throws SystemException System exception.
 	 */
-	public Long savePreset(final Preset preset) throws SystemException {
+	public Long savePreset(final Preset preset) {
 		return presetDao.save(preset);
 	}
 
@@ -60,9 +58,8 @@ public class ServiceWrapper {
 	 * Delete preset.
 	 * 
 	 * @param preId Preset id.
-	 * @throws SystemException System exception.
 	 */
-	public void deletePreset(final Long preId) throws SystemException {
+	public void deletePreset(final Long preId) {
 		presetDao.delete(preId);
 	}
 
@@ -71,9 +68,8 @@ public class ServiceWrapper {
 	 * 
 	 * @param sample Sample.
 	 * @return Sample id.
-	 * @throws SystemException System exception.
 	 */
-	public Long saveSample(final Sample sample) throws SystemException {
+	public Long saveSample(final Sample sample) {
 		return sampleDao.save(sample);
 	}
 
@@ -94,7 +90,7 @@ public class ServiceWrapper {
 	 * @return Cursor on all samples from a specified preset.
 	 * @throws SystemException System exception.
 	 */
-	public Cursor getAllSampleFromPreset(final Long preId) throws SystemException {
+	public Cursor getAllSampleFromPreset(final Long preId) {
 		return sampleDao.getAllFromPreset(preId);
 	}
 
@@ -102,9 +98,8 @@ public class ServiceWrapper {
 	 * Delete sample.
 	 * 
 	 * @param splId Sample id.
-	 * @throws SystemException System exception.
 	 */
-	public void deleteSample(final Long splId) throws SystemException {
+	public void deleteSample(final Long splId) {
 		sampleDao.delete(splId);
 	}
 }
