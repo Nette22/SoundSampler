@@ -1,3 +1,5 @@
 bin
 SoundSampler/bin
 SoundSamplerTest/bin
+**/local.properties
+
